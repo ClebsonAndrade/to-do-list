@@ -3,6 +3,7 @@ const input = document.querySelector(".input-task")
 const listaCompleta = document.querySelector(".list-tasks")
 
 let minhaListaDeItens = []
+let posicaoParaAlterar = 0
 
 
 function adicionarNovaTarefa() {
@@ -17,6 +18,7 @@ function adicionarNovaTarefa() {
     
 }
 
+
 function mostrarTarefas () {
     
     let novaLi = ""
@@ -28,7 +30,11 @@ function mostrarTarefas () {
         <li class="task ${item.concluida && "done"}">
             <img src="./img/checked.png" alt="Check-na-tarefa" onclick="concluirTarefa(${posicao})">
             <p>${item.tarefa}</p>
-            <img src="./img/trash.png" alt="tarefa-para-o-lixo" onclick="deletarItem(${posicao})">
+            <div>
+                <img src="./img/alterar.png" class="img-alterar" alt="alterar-tarefa" onclick="alterarItem(${posicao})">
+                <img src="./img/trash.png" alt="tarefa-para-o-lixo" onclick="deletarItem(${posicao})">
+            </div>
+            
         </li>
         
         `
@@ -44,6 +50,29 @@ function concluirTarefa(posicao) {
 
     mostrarTarefas()
 
+}
+
+function alterarItem (posicao) {
+    input.value = minhaListaDeItens[posicao].tarefa
+    button.lastChild.data = "Alterar"
+    
+    button.removeEventListener("click", adicionarNovaTarefa)
+    button.addEventListener("click", alterarTarefa)
+
+    posicaoParaAlterar = posicao
+}
+
+function alterarTarefa () {
+    minhaListaDeItens[posicaoParaAlterar].tarefa = input.value
+    minhaListaDeItens[posicaoParaAlterar].concluida = false
+        
+    mostrarTarefas()
+
+    input.value = ""
+    button.lastChild.data = "Adicionar"
+
+    button.removeEventListener("click", alterarTarefa)
+    button.addEventListener("click", adicionarNovaTarefa)
 }
 
 function deletarItem (posicao) {
