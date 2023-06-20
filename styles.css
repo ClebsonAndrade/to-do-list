@@ -13,7 +13,7 @@ body {
 
 .container {
     background-color: #d1d1d1;
-    width: 500px;
+    width: 600px;
     border-radius: 5px;
     padding: 20px;
     margin: 100px auto 0;
@@ -28,7 +28,7 @@ body {
     font-size: 16px;
 }
 
-.button-add-task {
+.button-add {
     border: none;
     border-radius: 5px;
     height: 40px;
@@ -36,23 +36,44 @@ body {
     color: #ffffff;
     font-size: 17px;
     padding: 0 15px;
-    float: right;
     cursor: pointer;
 }
 
-.button-add-task:hover  {
+.button-add-task{
+    display: inline;
+}
+
+.button-add:hover  {
     opacity: 0.8;
 }
 
-.button-add-task:active {
+.button-add:active {
     opacity: 0.6;
 }
+
+.titles {
+    display: inline-flex;
+    margin-top: 30px;
+    width: 100%;
+    background-color: #F2F2F2;
+    box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.2);
+    padding-left: 27px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.titleh4 {
+    margin-left: 250px;
+}
+
 
 .list-tasks {
     width: 100%;
     list-style: none;
     margin-top: 30px;
+
 }
+
 
 .task {
     background-color: #F2F2F2;
@@ -66,8 +87,6 @@ body {
     margin-bottom: 20px;
     cursor: pointer;
 }   
-
-
 
 img {
     height: 25px;
